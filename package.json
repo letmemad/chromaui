@@ -1,5 +1,5 @@
 {
-  "name": "@wannec/chromaui",
+  "name": "@letmemad/chromaui",
   "license": "MIT",
   "private": false,
   "version": "1.0.0",
@@ -8,6 +8,7 @@
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "description": "A React-Native UI/Theming Library.",
+  "repository": "https://github.com/letmemad/chromaui",
   "keywords": [
     "ui",
     "library",
