@@ -1,0 +1,35 @@
+{
+  "name": "@wannec/chromaui",
+  "license": "MIT",
+  "private": false,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Elias Wacheski",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "description": "A React-Native UI/Theming Library.",
+  "keywords": [
+    "ui",
+    "library",
+    "theming",
+    "react-native"
+  ],
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-native": "^0.72.7",
+    "typescript": "^5.2.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
