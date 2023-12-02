@@ -1,4 +1,6 @@
-export const light = {
+import { ChromaTheme } from "@letmemad/chromaui";
+
+export const light: ChromaTheme = {
   scheme: "light",
   colors: {
     text: "#000000",

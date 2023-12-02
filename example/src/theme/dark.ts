@@ -1,4 +1,6 @@
-export const dark = {
+import { ChromaTheme } from "@letmemad/chromaui";
+
+export const dark: ChromaTheme = {
   scheme: "dark",
   colors: {
     text: "#FFF",
