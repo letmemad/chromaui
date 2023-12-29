@@ -1,18 +1,20 @@
 import React from "react";
 import { ViewStyle, TextStyle, ImageStyle } from "react-native";
 
-import { ChromaTheme } from "../types/theme";
 import { ChromaContext } from "./ChromaContext";
+import { ChromaAccessibleConfig } from "../types/config";
 
 export type NamedStyles<T> = {
   [P in keyof T]: Partial<ViewStyle | TextStyle | ImageStyle>;
 }
 
 const ChromaStyleSheet = {
-  create<T>(callback: (theme: ChromaTheme) => NamedStyles<T>) {
+  create<T>(callback: (config: ChromaAccessibleConfig) => NamedStyles<T>) {
     function useChromaStyle(): NamedStyles<T> {
-      const theme = React.useContext(ChromaContext);
-      return callback(theme);
+      const config = React.useContext(ChromaContext);
+      const colors = config.colors[config.scheme]!;
+
+      return callback({ colors });
     }
 
     return { useChromaStyle };

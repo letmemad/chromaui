@@ -1,7 +1,7 @@
 import React from "react";
-import { ChromaTheme } from "../types/theme";
+import { ChromaConfig } from "../types/config";
 interface Properties {
-    theme: ChromaTheme;
+    config: ChromaConfig;
     children: React.ReactNode;
 }
 declare const ChromaProvider: React.FC<Properties>;

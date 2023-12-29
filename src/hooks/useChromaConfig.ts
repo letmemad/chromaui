@@ -1,11 +1,10 @@
 import React from "react";
-
-import { ChromaTheme } from "../types/theme";
+import { ChromaConfig } from "../types/config";
 import { ChromaContext } from "../core/ChromaContext";
 
-function useChromaTheme(): ChromaTheme {
+function useChromaConfig(): ChromaConfig {
   const context = React.useContext(ChromaContext);
   return context;
 }
 
-export { useChromaTheme };
+export { useChromaConfig };

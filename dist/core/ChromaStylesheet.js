@@ -3,13 +3,11 @@ import { ChromaContext } from "./ChromaContext";
 const ChromaStyleSheet = {
     create(callback) {
         function useChromaStyle() {
-            const theme = React.useContext(ChromaContext);
-            return callback(theme);
+            const config = React.useContext(ChromaContext);
+            const colors = config.colors[config.scheme];
+            return callback({ colors });
         }
-        function update(style) {
-            return style;
-        }
-        return { useChromaStyle, update };
+        return { useChromaStyle };
     }
 };
 export { ChromaStyleSheet };

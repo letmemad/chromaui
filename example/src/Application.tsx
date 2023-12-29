@@ -1,18 +1,13 @@
 import React from "react";
-import { Text, TouchableOpacity, View, useColorScheme } from "react-native";
 import { ChromaProvider } from "@letmemad/chromaui";
-
-import { dark } from "./theme/dark";
-import { light } from "./theme/light";
+import { Text, TouchableOpacity, View } from "react-native";
 
 import style from "./styles";
+import { config } from "./theme";
 
 const Application: React.FC = () => {
-  const scheme = useColorScheme();
-  const theme = scheme == "dark" ? dark : light;
-
   return (
-    <ChromaProvider theme={theme}>
+    <ChromaProvider config={config}>
       <Component />
     </ChromaProvider>
   );
@@ -20,19 +15,6 @@ const Application: React.FC = () => {
 
 const Component: React.FC = () => {
   const styles = style.useChromaStyle();
-
-  // Handlers
-  function handleToggleStyles() {
-    style.update({
-      container: {
-        backgroundColor: "red",
-      },
-
-      greetings: {
-        color: "#EEE",
-      },
-    })
-  }
 
   return (
     <View style={[styles.container]}>

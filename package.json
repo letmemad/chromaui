@@ -2,7 +2,7 @@
   "name": "@letmemad/chromaui",
   "license": "MIT",
   "private": false,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "dist/index.js",
   "author": "Elias Wacheski",
   "types": "dist/index.d.ts",
@@ -16,7 +16,7 @@
     "react-native"
   ],
   "scripts": {
-    "build": "npx tsc"
+    "build": "rm -rf ./dist && npx tsc"
   },
   "peerDependencies": {
     "react": "*",

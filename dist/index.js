@@ -1,4 +1,4 @@
 export { ChromaProvider } from "./core/ChromaProvider";
-export { useChromaTheme } from "./hooks/useChromaTheme";
+export { useChromaConfig } from "./hooks/useChromaConfig";
 export { useChromaColors } from "./hooks/useChromaColors";
 export { ChromaStyleSheet } from "./core/ChromaStylesheet";

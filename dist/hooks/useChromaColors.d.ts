@@ -1,3 +1,2 @@
-import { ChromaColors } from "../types/theme";
-declare function useChromaColors(): ChromaColors;
+declare function useChromaColors(): import("..").ChromaColors;
 export { useChromaColors };

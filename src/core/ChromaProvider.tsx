@@ -1,16 +1,28 @@
 import React from "react";
+import { useColorScheme } from "react-native";
 
+import { ChromaConfig } from "../types/config";
 import { ChromaContext } from "./ChromaContext";
-import { ChromaTheme } from "../types/theme";
+import { validateChromaConfig } from "../utils/validateChromaConfig";
 
 interface Properties {
-  theme: ChromaTheme;
+  config: ChromaConfig;
   children: React.ReactNode;
 }
 
-const ChromaProvider: React.FC<Properties> = ({ children, theme }) => {
+const ChromaProvider: React.FC<Properties> = ({ children, config }) => {
+  const scheme = useColorScheme() ?? "light";
+  const colorMode = config.initialColorMode == "system" ? scheme : (config.initialColorMode ?? "light");
+
+  const { error, isValid } = validateChromaConfig(config);
+
+  if(isValid == false) {
+    throw new Error(error!);
+  }
+
   return (
-    <ChromaContext.Provider value={theme}>
+    <ChromaContext.Provider 
+    value={{ scheme: colorMode, ...config }}>
       {children}
     </ChromaContext.Provider>
   );

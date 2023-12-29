@@ -1,11 +1,17 @@
 import React from "react";
-
-import { ChromaColors } from "../types/theme";
 import { ChromaContext } from "../core/ChromaContext";
 
-function useChromaColors(): ChromaColors {
+function useChromaColors() {
   const context = React.useContext(ChromaContext);
-  return context.colors;
+  const isDark = context.scheme == "dark";
+
+  if(isDark) {
+    const darkColors = context.colors.dark!;
+    return darkColors;
+  }
+
+  const lightColors = context.colors.light;
+  return lightColors;
 }
 
 export { useChromaColors };
