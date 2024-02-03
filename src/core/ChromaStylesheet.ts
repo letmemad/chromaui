@@ -1,5 +1,5 @@
 import React from "react";
-import { ViewStyle, TextStyle, ImageStyle } from "react-native";
+import { ViewStyle, TextStyle, ImageStyle, useColorScheme } from "react-native";
 
 import { ChromaContext } from "./ChromaContext";
 import { ChromaAccessibleConfig } from "../types/config";
@@ -11,10 +11,15 @@ export type NamedStyles<T> = {
 const ChromaStyleSheet = {
   create<T>(callback: (config: ChromaAccessibleConfig) => NamedStyles<T>) {
     function useChromaStyle(): NamedStyles<T> {
-      const config = React.useContext(ChromaContext);
-      const colors = config.colors[config.scheme]!;
+      const systemAppearance = useColorScheme() ?? "light";
+      const { config } = React.useContext(ChromaContext);
 
-      return callback({ colors });
+      const scheme = config.appearance == "system" ? systemAppearance : config.appearance;
+
+      return callback({
+        isDark: scheme == "dark",
+        colors: config.colors[scheme]!,
+      });
     }
 
     return { useChromaStyle };

@@ -2,7 +2,7 @@
 import { ChromaColors } from "./colors";
 
 export type ChromaConfig = {
-  initialColorMode?: "light" | "dark" | "system";
+  appearance: "light" | "dark" | "system";
   // initialFontFamily?: string;
 
   colors: {
@@ -14,6 +14,7 @@ export type ChromaConfig = {
 }
 
 export type ChromaAccessibleConfig = {
+  isDark: boolean;
   colors: ChromaColors;
   // fonts?: Record<string, ChromaFonts>;
 }

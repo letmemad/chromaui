@@ -1,8 +1,7 @@
 export type ChromaColorLevels = {
-  lower: string;
+  light: string;
   medium: string;
-  regular: string;
-  default: string;
+  heavy: string;
 }
 
 export type ChromaCommonColors = {
@@ -11,6 +10,6 @@ export type ChromaCommonColors = {
   background: ChromaColorLevels;
 }
 
-export interface ChromaColors extends ChromaCommonColors {
-  [x: string]: ChromaColorLevels;
+export type ChromaColors<T = any> = ChromaCommonColors & {
+  [P in keyof T]: ChromaColorLevels;
 }

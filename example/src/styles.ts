@@ -7,11 +7,11 @@ export default ChromaStyleSheet.create(({ colors }) => ({
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.background.default,
+    backgroundColor: colors.background.light,
   },
 
   greetings: {
-    color: colors.primary.default,
+    color: colors.primary.heavy,
     fontSize: PixelRatio.getFontScale() * 20,
   },
 }));

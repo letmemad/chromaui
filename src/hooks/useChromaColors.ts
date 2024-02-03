@@ -1,17 +1,33 @@
 import React from "react";
+import { useColorScheme } from "react-native";
 import { ChromaContext } from "../core/ChromaContext";
 
 function useChromaColors() {
-  const context = React.useContext(ChromaContext);
-  const isDark = context.scheme == "dark";
+  const system = useColorScheme() ?? "light";
+  const { config } = React.useContext(ChromaContext);
 
-  if(isDark) {
-    const darkColors = context.colors.dark!;
-    return darkColors;
+  switch(config.appearance) {
+    case "system": {
+      const isDark = system == "dark";
+      const colors = config.colors[system]!;
+
+      return { isDark, colors }
+    }
+
+    case "dark": {
+      const isDark = true;
+      const colors = config.colors.dark!;
+
+      return { isDark, colors }
+    }
+
+    default: {
+      const isDark = false;
+      const colors = config.colors.light;
+
+      return { isDark, colors }
+    }
   }
-
-  const lightColors = context.colors.light;
-  return lightColors;
 }
 
 export { useChromaColors };

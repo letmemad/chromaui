@@ -1,29 +1,38 @@
 import React from "react";
-import { useColorScheme } from "react-native";
 
+import { error } from "../utils/error";
 import { ChromaConfig } from "../types/config";
 import { ChromaContext } from "./ChromaContext";
-import { validateChromaConfig } from "../utils/validateChromaConfig";
 
 interface Properties {
   config: ChromaConfig;
   children: React.ReactNode;
 }
 
-const ChromaProvider: React.FC<Properties> = ({ children, config }) => {
-  const scheme = useColorScheme() ?? "light";
-  const colorMode = config.initialColorMode == "system" ? scheme : (config.initialColorMode ?? "light");
+type Reducer = React.Reducer<ChromaConfig, Partial<ChromaConfig>>;
 
-  const { error, isValid } = validateChromaConfig(config);
+function reducer<T>(state: T, mutation: Partial<T>): T {
+  return { ...state, ...mutation };
+}
 
-  if(isValid == false) {
-    throw new Error(error!);
+const ChromaProvider: React.FC<Properties> = (props) => {
+  // Main state
+  const [config, mutate] = React.useReducer<Reducer>(reducer, props.config);
+  
+  if(Object.keys(config ?? {}).length == 0) {
+    error.dispatch("Config is not defined.");
+  }
+
+  const appearance = config.appearance;
+  const isDarkColorsDefined = config.colors.dark != undefined;
+
+  if(appearance != "light" && isDarkColorsDefined == false) {
+    error.dispatch("Dark mode colors are not defined.");
   }
 
   return (
-    <ChromaContext.Provider 
-    value={{ scheme: colorMode, ...config }}>
-      {children}
+    <ChromaContext.Provider value={{ config, mutate }}>
+      {props.children}
     </ChromaContext.Provider>
   );
 }

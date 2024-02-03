@@ -1,7 +1,6 @@
 {
   "include": ["./src"],
   "compilerOptions": {
-    "baseUrl": ".",
     "declaration": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -10,7 +9,7 @@
     "jsx": "react",
     "lib": ["esnext", "dom"],
     "module": "esnext",
-    "outDir": "./dist",
+    "outDir": "./lib",
     "rootDir": "./src",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

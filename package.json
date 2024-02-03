@@ -2,11 +2,12 @@
   "name": "@letmemad/chromaui",
   "license": "MIT",
   "private": false,
-  "version": "2.0.0",
-  "main": "dist/index.js",
+  "version": "2.1.0",
+  "main": "lib/index",
+  "source": "src/index",
   "author": "Elias Wacheski",
-  "types": "dist/index.d.ts",
-  "typings": "dist/index.d.ts",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
   "description": "A React-Native UI/Theming Library.",
   "repository": "https://github.com/letmemad/chromaui",
   "keywords": [
@@ -16,19 +17,23 @@
     "react-native"
   ],
   "scripts": {
-    "build": "rm -rf ./dist && npx tsc"
+    "build": "npx tsc"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.23.7",
     "@types/react": "^18.2.37",
     "@types/react-native": "^0.72.7",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "metro-react-native-babel-preset": "^0.77.0",
     "typescript": "^5.2.2"
   },
   "files": [
-    "dist"
+    "lib",
+    "babel.config.js"
   ],
   "publishConfig": {
     "access": "public"
